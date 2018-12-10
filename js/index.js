@@ -46,19 +46,15 @@ $(window).resize(function(){
 	ajustarAltura();
 });
 
-
 var colorRendererRjo = function (instance, td, row, col, prop, value, cellProperties) {
     Handsontable.renderers.TextRenderer.apply(this, arguments);
     td.style.backgroundColor = "#F7C2BE";
 };
-
 var colorRendererBlanco = function (instance, td, row, col, prop, value, cellProperties) {
     Handsontable.renderers.TextRenderer.apply(this, arguments);
     td.style.backgroundColor = "white";
     td.id = 'noCurrent';
-
 };
-
 var colorRendererMorado = function (instance, td, row, col, prop, value, cellProperties) {
     Handsontable.renderers.TextRenderer.apply(this, arguments);
     td.style.backgroundColor = "#a5d6a7";
@@ -80,9 +76,7 @@ function ajustarAltura(){
 	//$("#contenedor3").height(alturaContenedores);
 	$("#contenedorMemoria").height(2*alturaContenedores/5);
 	$("#contenedorEjecucion").height(3*alturaContenedores/5);
-
 }
-
 
 function crearGrid(){
 	Instrucciones = new Handsontable(grid, {
@@ -96,7 +90,6 @@ function crearGrid(){
 	});
 	$("#hot-display-license-info").css("display","none");
 }
-
 function ObtenerInstrucciones(){
 	return Instrucciones.getData(); //Obtenemos las instrucciones	
 }
@@ -108,7 +101,6 @@ function limpiarBR(){
 		}		
 	}
 }
-
 function limpiarVariables(){
 	$("#depurContenedor").html("");
 	$("#tbl_memoria").html("");
@@ -173,7 +165,6 @@ function imprimirEstadoMemoria(){
     	}
     }
 }
-
 function subrayado(){
 	Instrucciones.updateSettings({
 	  cells: function (row, col, prop) {
@@ -187,7 +178,6 @@ function subrayado(){
 	    }
 	});
 }
-
 function Ejecutar(){		
 	Instrucciones.selectCell();
 	ajustarAltura();	
@@ -209,9 +199,7 @@ function Ejecutar(){
 			imprimirEstadoMemoria();
 	    	clearInterval(steps);
 	    }
-
-	}, Time);	
-    
+	}, Time);	  
 }
 
 function stepByStep(){	
@@ -228,7 +216,7 @@ function stepByStep(){
         	msj_estado="Error de sintaxis";
         	imprimirEstadoInstruccion();
         	return; 
-        	
+
 		}
 		switch(OpCode) {//clasifica la operación dependiendo del código de operacion
 		    case 10://Lee
@@ -514,9 +502,6 @@ function stepByStep(){
 	        	msj_estado="Debe indicar el final del programa.";
 	        	imprimirEstadoInstruccion();
 			}
-			
 		}
-	}    
-		
-    
+	}      
 } 
