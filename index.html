@@ -1,8 +1,149 @@
   <!DOCTYPE html>
   <html>
     <head>
+      <!--Import Google Icon Font-->
+      <link href="css/icon.css" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+      <link rel="icon" href="images/favicon.png">
+      <link href="css/handsontable.min.css" rel="stylesheet" media="screen">
+      <link href="css/index.css" rel="stylesheet" media="screen">
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <title>CatraComputer</title>      
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body >
+    <nav class="blue z-depth-0">
+      <nav id="navBar">
+        <div class="nav-wrapper #00796b teal darken-2">
+          <a href="#" class="brand-logo center">CatraComputer</a>
+        </div>
+      </nav>
+    </nav>
+      <div class="row" style="padding-top: 10px;margin: 0px;">
 
-<h1>PRUEBA</h1>
+        <div class="col s12 m12 l3" id="contenedor1">
+          <div class="row teal-text text-darken-1" style="background-color: rgb(243, 243, 243);margin: 0px;padding: 0px;">
+            <div class="col s2 m1 l3">
+              <i class="medium material-icons">save</i>
+            </div>
+            <div class="col s10 m11 l9">
+              <h4 class="">Resultado</h4>
+            </div>
+          </div>          
+          <div class="valign-wrapper center-align" style="height: 230px;width: 100%;position: relative;">
+            <i class="material-icons grey-text text-darken-3" style="width: 100%;font-size:17em">inbox</i>
+            <div style="position: absolute;width: 100%;font-size:5em;top:40px;" id="imp_pant"></div>
+          </div>
+
+          <div style="background-color: rgb(243, 243, 243);padding: 7px;margin-bottom: 7px;">
+            <div class="row teal-text text-darken-1" style="margin: 0px;">
+              <div class="col s3 m1 l3">
+                <i class="medium material-icons">view_headline</i>
+              </div>
+              <div class="col s9 m11 l9">
+                <h4 class="">Registros</h4>
+              </div>
+            </div>            
+            <ul class="collapsible">
+              <li>
+                <div class="collapsible-header">
+                  <i class="material-icons">filter_1</i>
+                  Contador de Programa
+                  <span class="badge" id="reg_pc">+000</span></div>
+              </li>
+              <li>
+                <div class="collapsible-header">
+                  <i class="material-icons">dehaze</i>
+                  Registro de Instrucciones
+                  <span class="badge" id="reg_ir">+00000</span></div>
+              </li>
+              <li>
+                <div class="collapsible-header">
+                  <i class="material-icons">exposure</i>
+                  Acumulador
+                  <span class="badge" id="reg_ac">0</span></div>
+              </li>
+            </ul>
+        </div>
+          
+        </div>
+
+        <div class="col s12 m12 l5">
+          <div class="row teal-text text-darken-1">
+            <div class="col s2 m1 l2">
+              <i class="medium material-icons">dvr</i>
+            </div>
+            <div class="col s10 m11 l10">
+              <h4 class="">Panel de instrucciones</h4>
+            </div>
+          </div>          
+          <p>
+            Ingrese las instrucciones del programa.
+          </p>
+          <div id="instruct" style="font-size: 19px;margin-bottom: 10px;"></div>  
+          
+          <p>
+            <input type="checkbox" id="chk_stepe"/>
+            <label for="chk_stepe" style="font-size:18px;">Habilitar la ejecución paso a paso.</label>
+          </p>       
+
+          <div style="text-align: center;"> 
+            <a class="btn waves-effect waves-light" id="clear" style="margin-bottom: 10px;"><i class="material-icons left">clear_all</i>Limpiar</a>
+            <a class="btn waves-effect waves-light" id="ejecutar" style="margin-bottom: 10px;"><i class="material-icons left">play_arrow</i>Ejecutar</a>
+          </div>  
+        </div>
+ 
+        <div class="col s12 m12 l4" id="contenedor3"> 
+
+
+          <div style="background-color: rgb(243, 243, 343);padding: 7px;margin-bottom: 10px;">
+            <div id="contenedorEjecucion">
+              <div class="row teal-text text-darken-1" style="position: relative;">
+                <div class="col s2 m1 l3" style="height: 100%;">
+                  <i class="medium material-icons">ondemand_video</i>
+                </div>
+                <div class="col s10 m11 l9">
+                  <h4 class="">Tiempo Real</h4>
+                </div>
+              </div>       
+              <ul class="collection" id="depurContenedor">                         
+              </ul>
+            </div> 
+          </div>
+
+          <div style="background-color: rgb(243, 243, 243);padding: 7px;">
+            <div style="margin-bottom: 10px;" id="contenedorMemoria">
+              <div class="row teal-text text-darken-1">
+                  <div class="col s3 m1 l3">
+                    <i class="medium material-icons">memory</i>
+                  </div>
+                  <div class="col s9 m11 l9">
+                    <h4 class="">Memoria</h4>
+                  </div>
+                </div> 
+                 <table class="striped centered white">
+                  <thead>
+                    <tr>
+                        <th>Ubicación</th>
+                        <th>Contenido</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tbl_memoria">
+                  </tbody>
+                </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+        
+      <!--JavaScript at end of body for optimized loading-->
+      <script type="text/javascript" src="js/jquery.min.js"></script>
+      <script type="text/javascript" src="js/materialize.min.js"></script> 
+      <script type="text/javascript" src="js/handsontable.min.js"></script>     
+      <script type="text/javascript" src="js/index.js"></script>
     </body>
   </html>
 
